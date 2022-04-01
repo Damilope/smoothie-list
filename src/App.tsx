@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import PageMessage from "./components/PageMessage";
+import SmoothieContainer from "./components/SmoothieContainer";
+import SmoothieListContainer from "./components/SmoothieListContainer";
+import { appMessages } from "./lib/messages";
+import { appPaths } from "./lib/paths";
 
-function App() {
+const App: React.FC<{}> = () => {
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (window.location.pathname === appPaths.empty) {
+      navigate(appPaths.smoothieList);
+    }
+  }, [navigate]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route
+        path={appPaths.smoothieList}
+        element={<SmoothieListContainer />}
+      ></Route>
+      <Route
+        path={appPaths.smoothie(":smoothieId")}
+        element={<SmoothieContainer />}
+      ></Route>
+      <Route
+        path={appPaths.wildcard}
+        element={<PageMessage description={appMessages.pageNotFound} />}
+      ></Route>
+    </Routes>
   );
-}
+};
 
 export default App;

@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Yomi's Smoothie List",
+  "name": "Create a list of smoothies with ingredients",
   "icons": [
     {
       "src": "favicon.ico",
