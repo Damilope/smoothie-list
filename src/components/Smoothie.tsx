@@ -32,7 +32,7 @@ const Smoothie: React.FC<ISmoothieProps> = (props) => {
       onUpdate(smoothie.smoothieId, update);
       toggleEditing();
     },
-    [smoothie, toggleEditing]
+    [smoothie, onUpdate, toggleEditing]
   );
 
   if (isEditing) {

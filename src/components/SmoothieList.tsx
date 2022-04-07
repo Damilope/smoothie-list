@@ -27,14 +27,23 @@ const classes = {
 };
 
 const SmoothieList: React.FC<ISmoothieListProps> = (props) => {
-  const { smoothies, onAddSmoothie, onDeleteSmoothie, checkSmoothieExists } =
-    props;
+  const {
+    smoothies,
+    onAddSmoothie,
+    onDeleteSmoothie,
+    checkSmoothieExists,
+    onUpdateSmoothie,
+  } = props;
   const [showNewSmoothieForm, setNewSmoothieFormVisibility] =
     React.useState(false);
   const [editSmoothieWithId, setEditSmoothieId] = React.useState<string>();
   const toggleNewSmoothieFormVisibility = React.useCallback(() => {
     setNewSmoothieFormVisibility(!showNewSmoothieForm);
   }, [showNewSmoothieForm]);
+
+  const closeEditSmoothieFormVisibility = React.useCallback(() => {
+    setEditSmoothieId("");
+  }, []);
 
   const listNode = (
     <List
@@ -82,8 +91,8 @@ const SmoothieList: React.FC<ISmoothieListProps> = (props) => {
           <SmoothieForm
             smoothie={smoothie}
             ingredients={appIngredientList}
-            onSubmit={onAddSmoothie}
-            onCancel={toggleNewSmoothieFormVisibility}
+            onSubmit={(update) => onUpdateSmoothie(editSmoothieWithId, update)}
+            onCancel={closeEditSmoothieFormVisibility}
             checkSmoothieExists={checkSmoothieExists}
           />
         </div>

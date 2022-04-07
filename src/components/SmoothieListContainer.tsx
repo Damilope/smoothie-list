@@ -80,7 +80,7 @@ const SmoothieListContainer: React.FC<ISmoothieListContainerProps> = (
       internalSetSmoothies(updatedSmoothies);
       navigate(appPaths.smoothie(updatedSmoothie.smoothieId));
     },
-    [smoothies, internalSetSmoothies]
+    [smoothies, navigate, internalSetSmoothies]
   );
 
   const handleDeleteSmoothie = React.useCallback(
@@ -92,7 +92,7 @@ const SmoothieListContainer: React.FC<ISmoothieListContainerProps> = (
       internalSetSmoothies(updatedSmoothies);
       navigate(appPaths.smoothieList);
     },
-    [smoothies, internalSetSmoothies]
+    [smoothies, navigate, internalSetSmoothies]
   );
 
   const handleAddSmoothie = React.useCallback(
@@ -107,7 +107,7 @@ const SmoothieListContainer: React.FC<ISmoothieListContainerProps> = (
       internalSetSmoothies(updatedSmoothies);
       navigate(appPaths.smoothie(newSmoothie.smoothieId));
     },
-    [smoothies, internalSetSmoothies]
+    [smoothies, navigate, internalSetSmoothies]
   );
 
   const checkSmoothieExists = React.useCallback(
